@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelbouss <aelbouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 17:50:44 by aelbouss          #+#    #+#             */
-/*   Updated: 2025/04/23 12:01:41 by aelbouss         ###   ########.fr       */
+/*   Created: 2025/04/23 11:55:30 by aelbouss          #+#    #+#             */
+/*   Updated: 2025/04/23 12:03:21 by aelbouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 //headers section
 # include <stdio.h>
 # include <unistd.h>
@@ -34,4 +33,5 @@ size_t	ft_cnt(char *s);
 size_t	ft_strlen(const char *s);
 int		ft_check(char *s);
 void	*ft_calloc(size_t count, size_t size);
-#endif
+
+#endif 

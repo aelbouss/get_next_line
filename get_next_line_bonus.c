@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelbouss <aelbouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 17:54:46 by aelbouss          #+#    #+#             */
-/*   Updated: 2025/04/23 11:58:44 by aelbouss         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:03:06 by aelbouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*get_line(int fd, char **buffer)
 	rb = 1;
 	while (1)
 	{
-		if (ft_check(*buffer) == 1)
+		if (ft_check(buffer[fd]) == 1)
 			break ;
 		sub_buff = malloc((BUFFER_SIZE * sizeof(char)) + 1);
 		if (!sub_buff)
@@ -94,25 +94,25 @@ char	*get_line(int fd, char **buffer)
 			break ;
 		}
 		sub_buff[rb] = '\0';
-		*buffer = join_and_free(*buffer, sub_buff);
-		if (!*buffer)
+		buffer[fd] = join_and_free(buffer[fd], sub_buff);
+		if (!buffer[fd])
 			return (NULL);
 	}
-	if (ft_strlen(*buffer) == 0)
+	if (ft_strlen(buffer[fd]) == 0)
 		return (NULL);
-	return (load_line(*buffer));
+	return (load_line(buffer[fd]));
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[1090];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = get_line(fd, &buffer);
+	line = get_line(fd, buffer);
 	if (!line)
 		return (NULL);
-	buffer = update_buffer(buffer);
+	buffer[fd] = update_buffer(buffer[fd]);
 	return (line);
 }
